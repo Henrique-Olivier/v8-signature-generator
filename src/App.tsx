@@ -100,21 +100,20 @@ function App() {
           <span
             className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs dark:text-gray-200"
           >
-            Telefone
+            Telefone (Opicional)
           </span>
         </label>
 
       </div>
-      <div ref={signatureRef} className='flex items-center w-fit h-[230px] bg-[#FFF] mt-10'>
-        <div className='flex flex-col gap-4 mr-8'>
-          <h1 className='font-["Montserrat", sans-serif] text-xl text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{nome}</h1>
-          <h1 className='font-mont text-xl text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{area}</h1>
-          <h1 className='font-mont text-l text-[#0360DC] font-bold underline' style={{ fontFamily: 'Montserrat, sans-serif' }}>{email}</h1>
-          <h1 className='font-mont text-l text-[#12274B font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{`Mobile: ${telefone}`}</h1>
-          <h1 className='font-mont text-xl text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>Site: https://v8.tech</h1>
+      <div ref={signatureRef} className='flex items-center min-w-[560px] max-w-[580px] h-[190px] bg-[#FFF] mt-10'>
+        <div className='flex flex-col justify-center gap-[8px] mr-8 w-full h-[160px] p-2'>
+          <h1 className='font-["Montserrat", sans-serif] text-[22px] text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{nome}</h1>
+          <h1 className='font-mont text-sm text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{area}</h1>
+          <h1 className='font-mont text-sm text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{email}</h1>
+          {telefone && <h1 className='font-mont text-l text-[#12274B font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{`${telefone}`}</h1>}
+          <h1 className='font-mont text-sm text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>https://v8.tech</h1>
         </div>
-        <div className='h-[220px] w-[2px] bg-[#000] mr-8'></div>
-        <img src={BackgroundImage} alt="" />
+        <img className='h-full' src={BackgroundImage} alt="" />
       </div>
 
       <button className='mt-10 rounded-lg py-4 px-8 bg-[#65c98D] hover:opacity-90 text-[#fff] font-bold text-xl' onClick={handleDownload}>Download da Assinatura</button>
