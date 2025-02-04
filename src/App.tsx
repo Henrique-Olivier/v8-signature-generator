@@ -1,7 +1,7 @@
 // src/App.js
 import { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
-import BackgroundImage from './assets/Assinatura.png'
+import BackgroundImage from './assets/Assinatura.svg';
 import InputMask from 'react-input-mask';
 
 function App() {
@@ -11,16 +11,22 @@ function App() {
   const [email, setEmail] = useState('');
   const signatureRef = useRef(null);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (signatureRef.current) {
-      html2canvas(signatureRef.current).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'assinatura.png';
-        link.href = canvas.toDataURL();
-        link.click();
+      const canvas = await html2canvas(signatureRef.current, {
+        scale: 2, // Aumenta a resolução para melhor qualidade
+        width: 380,
+        height: 110,
+        useCORS: true, // Permite carregar imagens externas
       });
+
+      const link = document.createElement('a');
+      link.download = 'assinatura.png';
+      link.href = canvas.toDataURL('image/png', 1.0); // Qualidade máxima
+      link.click();
     }
   };
+
 
   return (
     <div className="bg-[#12274B] W-screen h-screen flex flex-col items-center justify-center">
@@ -105,13 +111,16 @@ function App() {
         </label>
 
       </div>
-      <div ref={signatureRef} className='flex items-center min-w-[560px] max-w-[580px] h-[190px] bg-[#FFF] mt-10'>
-        <div className='flex flex-col justify-center gap-[8px] mr-8 w-full h-[160px] p-2'>
-          <h1 className='font-["Montserrat", sans-serif] text-[22px] text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{nome}</h1>
-          <h1 className='font-mont text-sm text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{area}</h1>
-          <h1 className='font-mont text-sm text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{email}</h1>
-          {telefone && <h1 className='font-mont text-l text-[#12274B font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{`${telefone}`}</h1>}
-          <h1 className='font-mont text-sm text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>https://v8.tech</h1>
+      <div ref={signatureRef} className='flex items-center w-[380px]  h-[110px] bg-[#FFF] mt-10'>
+        <div className='flex flex-col justify-center gap-[6px] w-full h-full p-2 mt-[-15px]'>
+          <h1 className='font-["Montserrat", sans-serif] text-[10px] text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{nome}</h1>
+          <h1 className='font-mont text-[8px] text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{area}</h1>
+          <h1 className='font-mont text-[8px] text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{email}</h1>
+          {telefone && <h1 className='font-mont text-[8px] text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{`${telefone}`}</h1>}
+          <h1 className='font-mont text-[10px] text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>https://v8.tech</h1>
+        </div>
+        <div className='w-[1px] h-[80%] bg-[#000] opacity-40 mr-4'>
+
         </div>
         <img className='h-full' src={BackgroundImage} alt="" />
       </div>
