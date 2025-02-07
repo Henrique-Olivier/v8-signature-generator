@@ -129,7 +129,7 @@ function App() {
             {telefone && <h1 className='font-mont text-[8px] text-[#12274B] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>{`${telefone}`}</h1>}
             <h1 className='font-mont text-[10px] text-[#0360DC] font-bold' style={{ fontFamily: 'Montserrat, sans-serif' }}>https://v8.tech</h1>
           </div>
-          <div className='w-[1px] h-[80%] bg-[#000] opacity-40 mr-4'>
+          <div className='w-[2px] h-[80%] bg-[#000] opacity-40 mr-4'>
 
           </div>
           <img className='h-full' src={BackgroundImage} alt="" />
