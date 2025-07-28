@@ -1,7 +1,7 @@
 // src/App.js
 import { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
-import BackgroundImage from './assets/Assinatura.svg';
+import BackgroundImage from './assets/novaAssinatura.svg';
 import V8logo from './assets/V8_Branco_Horizontal_1000px.png';
 import InputMask from 'react-input-mask';
 
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className='bg-[#12274B] p-4 h-screen'>
 
-    <img src={V8logo} alt="" className='w-96' />
+      <img src={V8logo} alt="" className='w-96' />
 
       <div className="bg-[#12274B] W-screen flex flex-col items-center justify-center mt-50">
         <div className='flex flex-col gap-4 w-[400px]'>
